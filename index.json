@@ -1,6 +1,6 @@
 {
   "schema": 2,
-  "generated_at": "2026-10-31T10:09:58Z",
+  "generated_at": "2026-11-01T02:07:27Z",
   "signed": true,
   "key_id": "catalog-1",
   "repository": "https://github.com/movieclaw/movieclaw-plugins",
@@ -27,10 +27,66 @@
       "screenshots": [],
       "deprecated": null,
       "feedback_url": "https://github.com/movieclaw/movieclaw-plugins/issues/new?template=plugin-feedback.yml&plugin=cast-cn",
-      "downloads": 5,
-      "latest": "0.3.4",
-      "latest_stable": "0.3.4",
+      "downloads": 7,
+      "latest": "0.3.5",
+      "latest_stable": "0.3.5",
       "versions": [
+        {
+          "version": "0.3.5",
+          "prerelease": false,
+          "released_at": "2026-11-01T02:07:27Z",
+          "yanked": null,
+          "notes": "- 修复**多任务并发时互相饿死**：旧实现在任务内阻塞等待主程序刷新完成（最长 10 分钟），多个条目同时等待时各自占着一个执行器槽位，而它们的刷新任务又排在队列里拿不到槽位——互相等死，活动中心呈现「一直未完成」。现在创建刷新任务后**立即释放槽位**，刷新没完成就自动延迟重查（任务重试里续跑复核）；等待超过重试预算的以「已写入并触发刷新」收尾，复核延至下一轮补跑自动续验。实机验证：4 条目并发 20 秒完成（原同样场景 15 分钟死锁）。\n- 刷新任务失败或被清理时自动重建；刷新状态轮询改用 `jobs.show`（清单权限同步：`jobs.wait` → `jobs.show`）。\n",
+          "changelog_url": "https://github.com/movieclaw/movieclaw-plugins/releases/tag/cast-cn-v0.3.5",
+          "source_url": "https://github.com/movieclaw/movieclaw-plugins/tree/cast-cn-v0.3.5/plugins/cast-cn",
+          "readme": {
+            "url": "https://raw.githubusercontent.com/movieclaw/movieclaw-plugins/cast-cn-v0.3.5/plugins/cast-cn/README.md",
+            "sha256": "ba1d9810cd60f3c2c80da4c933856620594fa8a94df7d754175d0649b29df78b",
+            "size": 3981
+          },
+          "runtime": "process",
+          "sdk": "^1.0",
+          "requires": {
+            "library.items.arrived": "^1.0",
+            "scheduled-tasks": "^1.0",
+            "job-handlers": "^1.1"
+          },
+          "platforms": [
+            "any"
+          ],
+          "permissions": {
+            "operations": [
+              "app.show",
+              "library.list",
+              "library.items.list",
+              "library.items.get",
+              "library.items.refresh-metadata",
+              "jobs.show",
+              "people.show",
+              "search.titles"
+            ],
+            "paths": [
+              {
+                "path": "library",
+                "mode": "rw"
+              }
+            ],
+            "network": true,
+            "callbacks": [],
+            "events": []
+          },
+          "web": true,
+          "dependencies": null,
+          "artifacts": [
+            {
+              "platform": "any",
+              "filename": "cast-cn-0.3.5.mcplugin",
+              "url": "https://github.com/movieclaw/movieclaw-plugins/releases/download/cast-cn-v0.3.5/cast-cn-0.3.5.mcplugin",
+              "sha256": "a8d3206c88fbf939b52d81f1097fd8cd8fc9ec34766be255dca7be4ad87c6f78",
+              "size": 51249
+            }
+          ]
+        },
         {
           "version": "0.3.4",
           "prerelease": false,
@@ -983,7 +1039,7 @@
       "screenshots": [],
       "deprecated": null,
       "feedback_url": "https://github.com/movieclaw/movieclaw-plugins/issues/new?template=plugin-feedback.yml&plugin=notifyhub",
-      "downloads": 12,
+      "downloads": 13,
       "latest": "2.3.0",
       "latest_stable": "2.3.0",
       "versions": [
@@ -1070,7 +1126,7 @@
       "screenshots": [],
       "deprecated": null,
       "feedback_url": "https://github.com/movieclaw/movieclaw-plugins/issues/new?template=plugin-feedback.yml&plugin=openlist-direct-link",
-      "downloads": 13,
+      "downloads": 14,
       "latest": "0.1.0",
       "latest_stable": "0.1.0",
       "versions": [
@@ -1138,7 +1194,7 @@
       "screenshots": [],
       "deprecated": null,
       "feedback_url": "https://github.com/movieclaw/movieclaw-plugins/issues/new?template=plugin-feedback.yml&plugin=p115-import",
-      "downloads": 0,
+      "downloads": 2,
       "latest": "0.4.7",
       "latest_stable": "0.4.7",
       "versions": [
@@ -1229,7 +1285,7 @@
       "screenshots": [],
       "deprecated": null,
       "feedback_url": "https://github.com/movieclaw/movieclaw-plugins/issues/new?template=plugin-feedback.yml&plugin=platform-discovery",
-      "downloads": 27,
+      "downloads": 29,
       "latest": "0.2.1",
       "latest_stable": "0.2.1",
       "versions": [
@@ -1437,7 +1493,7 @@
       "screenshots": [],
       "deprecated": null,
       "feedback_url": "https://github.com/movieclaw/movieclaw-plugins/issues/new?template=plugin-feedback.yml&plugin=pt-keepalive",
-      "downloads": 17,
+      "downloads": 18,
       "latest": "0.2.3",
       "latest_stable": "0.2.3",
       "versions": [
@@ -1559,7 +1615,7 @@
       "screenshots": [],
       "deprecated": null,
       "feedback_url": "https://github.com/movieclaw/movieclaw-plugins/issues/new?template=plugin-feedback.yml&plugin=pt-site-pack",
-      "downloads": 41,
+      "downloads": 42,
       "latest": "0.2.1",
       "latest_stable": "0.2.1",
       "versions": [
@@ -2288,7 +2344,7 @@
       "screenshots": [],
       "deprecated": null,
       "feedback_url": "https://github.com/movieclaw/movieclaw-plugins/issues/new?template=plugin-feedback.yml&plugin=watch-friends",
-      "downloads": 22,
+      "downloads": 23,
       "latest": "0.2.1",
       "latest_stable": "0.2.1",
       "versions": [
